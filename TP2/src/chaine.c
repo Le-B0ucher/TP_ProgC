@@ -1,48 +1,44 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int main() {
-    char *a = NULL, *b = NULL, *c = NULL;
-    size_t size = 0;
+void main() {
+    char chaine1[] = "Hello";
+    char chaine2[] = "World !";
+    int Length1 = 0;
+    int Length2 = 0;
 
-    // Lire chaîne a
-    printf("Chaîne 1 : ");
-    getline(&a, &size, stdin);
-
-    // Lire chaîne b
-    printf("Chaîne 2 : ");
-    size = 0;
-    getline(&b, &size, stdin);
-
-    // Nettoyer les '\n'
-    for (int i = 0; a[i]; i++) if (a[i] == '\n') a[i] = '\0';
-    for (int i = 0; b[i]; i++) if (b[i] == '\n') b[i] = '\0';
-
-    // Calcul de la longueur de a
-    int len = 0;
-    while (a[len]) len++;
-    printf("Longueur : %d\n", len);
-
-    // Copie dans c
-    int i = 0;
-    c = malloc(len + 1);
-    while ((c[i] = a[i])) i++;
-    printf("Copie : %s\n", c);
-
-    // Concaténation
-    int j = 0;
-    while (b[j]) j++;
-    c = realloc(c, len + j + 1);
-    for (int k = 0; k <= j; k++) {
-        c[len + k] = b[k];
+    // Calcul de la longueur de chaine1
+    for (int i = 0; i < 1000; i++) {
+        if (chaine1[i] == '\0') {
+            Length1 = i;
+            break;
+        }
     }
 
-    printf("Concaténation : %s\n", c);
+    // Calcul de la longueur de chaine2
+    for (int i = 0; i < 1000; i++) {
+        if (chaine2[i] == '\0') {
+            Length2 = i;
+            break;
+        }
+    }
 
-    // Libération mémoire
-    free(a);
-    free(b);
-    free(c);
+    // Déclaration de la chaîne finale avec +1 pour le '\0'
+    char chaine_finale[Length1 + Length2 + 1];
 
-    return 0;
+    // Copie de chaine1
+    for (int i = 0; i < Length1; i++) {
+        chaine_finale[i] = chaine1[i];
+    }
+
+    // Copie de chaine2 à la suite
+    for (int i = 0; i < Length2; i++) {
+        chaine_finale[Length1 + i] = chaine2[i];
+    }
+
+    // Ajout du caractère de fin
+    chaine_finale[Length1 + Length2] = '\0';
+
+    // Affichage de la chaîne finale
+    printf("%s\n", chaine_finale);
+
 }
