@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 int main() {
-    unsigned int a = 5;   // 0101
-    unsigned int b = 3;   // 0011
+    int n = 7; // nombre de termes à générer
+    int u0 = 0, u1 = 1;
 
-    printf("a       = %u\n", a);
-    printf("b       = %u\n", b);
+    printf("Suite de Fibonacci jusqu'à U%d : ", n);
 
-    printf("a & b   = %u\n", a & b);
-    printf("a | b   = %u\n", a | b);
-    printf("a ^ b   = %u\n", a ^ b);
-    printf("~a      = %u\n", ~a);
-    printf("a << 1  = %u\n", a << 1);
-    printf("a >> 1  = %u\n", a >> 1);
+    for (int i = 0; i < n; i++) {
+        printf("%d ", u0);
+        int suivant = u0 + u1;
+        u0 = u1;
+        u1 = suivant;
+    }
 
+    printf("\n");
     return 0;
 }
