@@ -2,13 +2,16 @@
 #include <math.h>
 
 int main() {
-    double rayon = 5.0;
-    double aire = M_PI * rayon * rayon;
-    double perimetre = 2 * M_PI * rayon;
+    double rayon, aire, perimetre;
 
-    printf("Rayon : %.2f\n", rayon);
-    printf("Aire : %.2f\n", aire);
-    printf("Périmètre : %.2f\n", perimetre);
+    printf("Entrez le rayon du cercle : ");
+    scanf("%lf", &rayon);
+
+    aire = M_PI * rayon * rayon;
+    perimetre = 2 * M_PI * rayon;
+
+    printf("Aire du cercle : %.2f\n", aire);
+    printf("Périmètre du cercle : %.2f\n", perimetre);
 
     return 0;
 }
