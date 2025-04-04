@@ -1,16 +1,14 @@
 #include <stdio.h>
 
-int main() {
+void main() {
     int n = 7;
-    int a = 0, b = 1, temp;
-    printf("%d %d ", a, b);
+    int val[] = {0,1};
+    int temp;
+    printf("%d %d ", val[0], val[1]);
     for(int i = 2; i < n; i++) {
-        temp = a+b;
+        temp = val[0]+val[1];
         printf("%d ", temp);
-        a=b ;
-        b = temp;     
+        val[0]=val[1];
+        val[1] = temp;     
     }
-
-
-    return 0;
 }
