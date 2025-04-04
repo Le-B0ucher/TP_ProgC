@@ -1,43 +1,48 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int main() {
-    char a[100], b[100], c[200];
+    char *a = NULL, *b = NULL, *c = NULL;
+    size_t size = 0;
 
+    // Lire chaîne a
     printf("Chaîne 1 : ");
-    fgets(a, sizeof(a), stdin);
+    getline(&a, &size, stdin);
 
+    // Lire chaîne b
     printf("Chaîne 2 : ");
-    fgets(b, sizeof(b), stdin);
+    size = 0;
+    getline(&b, &size, stdin);
 
-    // Supprimer \n
-    int i = 0;
-    while (a[i] != '\0') {
-        if (a[i] == '\n') a[i] = '\0';
-        i++;
-    }
-    i = 0;
-    while (b[i] != '\0') {
-        if (b[i] == '\n') b[i] = '\0';
-        i++;
-    }
+    // Nettoyer les '\n'
+    for (int i = 0; a[i]; i++) if (a[i] == '\n') a[i] = '\0';
+    for (int i = 0; b[i]; i++) if (b[i] == '\n') b[i] = '\0';
 
-    // Longueur
+    // Calcul de la longueur de a
     int len = 0;
-    while (a[len] != '\0') len++;
+    while (a[len]) len++;
     printf("Longueur : %d\n", len);
 
-    // Copie
-    i = 0;
-    while ((c[i] = a[i]) != '\0') i++;
+    // Copie dans c
+    int i = 0;
+    c = malloc(len + 1);
+    while ((c[i] = a[i])) i++;
     printf("Copie : %s\n", c);
 
     // Concaténation
     int j = 0;
-    while (b[j] != '\0') {
-        c[i++] = b[j++];
+    while (b[j]) j++;
+    c = realloc(c, len + j + 1);
+    for (int k = 0; k <= j; k++) {
+        c[len + k] = b[k];
     }
-    c[i] = '\0';
+
     printf("Concaténation : %s\n", c);
+
+    // Libération mémoire
+    free(a);
+    free(b);
+    free(c);
 
     return 0;
 }
