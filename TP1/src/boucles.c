@@ -1,26 +1,17 @@
 #include <stdio.h>
 
 int main() {
-    int compteur = 5;
+    int j = 5;
 
-    if (compteur >= 10) {
-        printf("Le compteur doit être strictement inférieur à 10.\n");
-        return 1;
-    }
-
-    int i = 1;
-    while (i <= compteur) {
-        int j = 1;
-        while (j <= i) {
-            if (i >= 3 && j > 1 && j < i) {
-                printf("# ");
-            } else {
+    for (int i = 0; i < j; i++) {
+        for (int k = 0; k <= i; k++) {
+            if (k == 0 || k == i || i == j - 1) { 
                 printf("* ");
+            } else {
+                printf("# ");
             }
-            j++;
         }
-        printf("\n");  // fin de la ligne après avoir imprimé tous les symboles
-        i++;
+        printf("\n");
     }
 
     return 0;
