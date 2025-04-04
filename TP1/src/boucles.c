@@ -3,20 +3,24 @@
 int main() {
     int compteur = 5;
 
-    if (compteur >= 10) {
-        printf("Le compteur doit être strictement inférieur à 10.\n");
-        return 1;
+    for (int i = 1; i <= compteur; i++) {
+        for (int j = 1; j <= i; j++) {
+            if (i == 1 || i == compteur || j == 1 || j == i)
+                printf("* ");
+            else
+                printf("# ");
+        }
+        printf("\n");
     }
-
-    int i = 1;
+    return 0;
+  
     while (i <= compteur) {
         int j = 1;
         while (j <= i) {
-            if (i >= 3 && j > 1 && j < i) {
-                printf("# ");
-            } else {
+            if (i == 1 || i == compteur || j == 1 || j == i)
                 printf("* ");
-            }
+            else
+                printf("# ");
             j++;
         }
         printf("\n");
@@ -24,4 +28,7 @@ int main() {
     }
 
     return 0;
+}
+
+  
 }
