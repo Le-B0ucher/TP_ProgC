@@ -2,7 +2,7 @@
 #include <math.h>
 
 int main() {
-    double rayon = 5.0; // valeur par défaut, tu peux modifier
+    double rayon = 5.0;
     double aire = M_PI * rayon * rayon;
     double perimetre = 2 * M_PI * rayon;
 
