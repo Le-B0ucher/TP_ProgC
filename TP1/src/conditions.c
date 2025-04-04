@@ -5,15 +5,14 @@ int main() {
 
     for (int i = 1; i <= 1000; i++) {
         if (i % 11 == 0) {
-            continue; // ignorer si divisible par 11
+            continue;
         }
 
         if (i % 5 == 0 || i % 7 == 0) {
+            if (somme + i > 5000) {
+                break;
+            }
             somme += i;
-        }
-
-        if (somme > 5000) {
-            break; // arrêter si on dépasse 5000
         }
     }
 
