@@ -1,14 +1,13 @@
 #include <stdio.h>
 
 int main() {
-    unsigned int c = 0x00100008; 
-
-  
-    int a = (c >> (32 - 4)) & 1;
-    int b = (c >> (32 - 20)) & 1;
-
-  
-    printf("%d\n", (a & b));
-    
+    int d = 268439552;
+    int pos4 = (d >> 28) & 1;
+    int pos20 = (d >> 12) & 1;
+    if (pos4 && pos20) {
+        printf("1\n");
+    } else {
+        printf("0\n");
+    }
     return 0;
 }
